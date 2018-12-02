@@ -1,2 +1,2 @@
-# alpine-ssh-client
-Extremely minimally possible ssh-client docker image
+# Alpine SSH-Client
+Recommended using for prod deployment
