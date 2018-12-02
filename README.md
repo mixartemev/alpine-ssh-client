@@ -13,7 +13,7 @@ I'm using it for prod deployment.
 (or `cp ~/.ssh/id_rsa ./id_rsa` if you're use RSA key, and then uncomment using rsa key in Dockerfile)
 
 3. build and push your privat image to your deploy server, for example gitlab (don't push it to public repositories)
-```
+```bash
 docker build -t registry.gitlab.com/your_login/ssh_for_x .
 docker push registry.gitlab.com/your_login/ssh_for_x
 ```
@@ -29,5 +29,5 @@ deploy:
   stage: deploy
   image: registry.gitlab.com/your_login/ssh_for_x
   script:
-  - ssh dev@$HOST 'git pull; composer update; ./artisan migrate; ./artisan optimize:clear; ./artisan view:clear;'
+  - ssh $DEPLOYER@$HOST 'git pull; composer update; ./artisan migrate; ./artisan optimize:clear' # your deploy commands
 ```
